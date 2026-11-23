@@ -162,6 +162,9 @@ def tabela_regras(regras, enc, n, arquivo, alfa_bonf):
 
 
 # Eixos dos gráficos com vírgula decimal
+# PDFs sem data de criação: rodar o script de novo não gera diferenças falsas no Git
+SEM_DATA = {"CreationDate": None}
+
 VIRGULA = FuncFormatter(lambda v, _: f"{v:g}".replace(".", ","))
 
 
@@ -202,12 +205,14 @@ def main():
     for i, v in enumerate(top1["lift"].tolist()[::-1]):
         ax.text(v + 0.02, i, fmt(v), va="center", fontsize=8)
     fig.tight_layout()
-    fig.savefig(FIGURAS / "lift_rodada1.pdf")
+    fig.savefig(FIGURAS / "lift_rodada1.pdf", metadata=SEM_DATA)
     plt.close(fig)
 
     # Gráfico: suporte x confiança de todas as regras
+    # Ordem fixa dos pontos: a ordem das regras muda a cada execução (hash dos conjuntos)
+    pontos = regras1.sort_values(["lift", "support", "confidence"])
     fig, ax = plt.subplots(figsize=(6.4, 3.6))
-    sc = ax.scatter(regras1["support"] * 100, regras1["confidence"] * 100, c=regras1["lift"],
+    sc = ax.scatter(pontos["support"] * 100, pontos["confidence"] * 100, c=pontos["lift"],
                     cmap="YlOrBr", s=14, edgecolors=c["escuro"], linewidths=0.2)
     ax.set_xscale("log")
     ax.set_xticks([0.1, 0.15, 0.2, 0.3, 0.4, 0.6])
@@ -218,7 +223,7 @@ def main():
     barra = fig.colorbar(sc, ax=ax, label="Lift")
     barra.ax.yaxis.set_major_formatter(VIRGULA)
     fig.tight_layout()
-    fig.savefig(FIGURAS / "dispersao_rodada1.pdf")
+    fig.savefig(FIGURAS / "dispersao_rodada1.pdf", metadata=SEM_DATA)
     plt.close(fig)
 
     # ---------------- Itens mais frequentes ----------------
@@ -232,7 +237,7 @@ def main():
     for i, v in enumerate(top_itens.values[::-1]):
         ax.text(v + 0.2, i, fmt(v, 1) + "%", va="center", fontsize=8)
     fig.tight_layout()
-    fig.savefig(FIGURAS / "itens_frequentes.pdf")
+    fig.savefig(FIGURAS / "itens_frequentes.pdf", metadata=SEM_DATA)
     plt.close(fig)
 
     # ---------------- Rodada 2 ----------------
