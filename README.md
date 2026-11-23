@@ -8,6 +8,8 @@ Trabalho da disciplina **Inteligência Computacional** — Prof. Canarozzo.
 
 📄 **Relatório completo (PDF):** [`relatorio/relatorio.pdf`](relatorio/relatorio.pdf)
 
+🛒 **Simulador interativo:** [`app.py`](app.py), um app em Streamlit para explorar as regras ao vivo ([como rodar](#simulador-interativo))
+
 ---
 
 ## Sumário
@@ -18,6 +20,7 @@ Trabalho da disciplina **Inteligência Computacional** — Prof. Canarozzo.
 - [Principais resultados](#principais-resultados)
 - [Limitações](#limitações)
 - [Relatório em LaTeX](#relatório-em-latex)
+- [Simulador interativo](#simulador-interativo)
 - [Como executar](#como-executar)
 - [Autores](#autores)
 
@@ -69,6 +72,7 @@ O notebook [`Mineração_produtos.ipynb`](Minera%C3%A7%C3%A3o_produtos.ipynb) é
 | **1** | Carregamento dos dados, montagem das transações, Apriori (suporte mínimo de 0,1%) e regras com lift ≥ 1 |
 | **2** | Tradução dos nomes dos produtos para português e nova geração das regras |
 | **3** | Análise sem os itens dominantes (leite integral, iogurte e salsicha): primeiro filtrando as regras, depois removendo os itens do dataset e rodando o Apriori com suporte mínimo de 0,05% |
+| **Gráfico** | Barras com o lift das 10 principais associações |
 
 ## Principais resultados
 
@@ -138,6 +142,27 @@ cd relatorio
 pdflatex relatorio.tex
 pdflatex relatorio.tex
 ```
+
+## Simulador interativo
+
+O arquivo [`app.py`](app.py) é um app em **Streamlit** que roda o mesmo Apriori do notebook e permite explorar os resultados ao vivo:
+
+| Aba | O que faz |
+|---|---|
+| 🛒 **Monte seu carrinho** | Escolha produtos e veja as recomendações, comparando a chance de levar cada item com a média de todas as compras |
+| 🔍 **Regras** | Tabela com suporte, confiança, lift e teste exato de Fisher (com correção de Bonferroni), mais um gráfico de dispersão |
+| 🕸️ **Mapa de produtos** | Grafo dos produtos ligados pelas regras de maior lift |
+| 📊 **Os dados** | Produtos mais frequentes e tamanho das compras |
+| 📘 **Como funciona** | As métricas e o algoritmo explicados |
+
+Na barra lateral dá para mudar o suporte, a confiança e o lift mínimos e remover os itens dominantes, como na segunda rodada do notebook.
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+O app abre no navegador em `http://localhost:8501`. A tradução dos 167 produtos fica em [`traducao_produtos.py`](traducao_produtos.py).
 
 ## Como executar
 
