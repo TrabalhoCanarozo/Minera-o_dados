@@ -6,6 +6,8 @@ Trabalho da disciplina **Inteligência Computacional** — Prof. Canarozzo.
 
 [![Abrir no Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/VictorSantos117/Minera-o_dados/blob/main/Minera%C3%A7%C3%A3o_produtos.ipynb)
 
+📄 **Relatório completo (PDF):** [`relatorio/relatorio.pdf`](relatorio/relatorio.pdf)
+
 ---
 
 ## Sumário
@@ -15,6 +17,7 @@ Trabalho da disciplina **Inteligência Computacional** — Prof. Canarozzo.
 - [Estrutura do notebook](#estrutura-do-notebook)
 - [Principais resultados](#principais-resultados)
 - [Limitações](#limitações)
+- [Relatório em LaTeX](#relatório-em-latex)
 - [Como executar](#como-executar)
 - [Autores](#autores)
 
@@ -113,7 +116,28 @@ Removendo leite integral, iogurte e salsicha do dataset, sobram 12.270 compras c
 - **Bases diferentes:** remover itens do dataset descarta compras, então os suportes das duas rodadas não são comparáveis.
 - **Regras espelhadas:** A → B e B → A têm o mesmo lift e aparecem duplicadas na saída.
 
-Próximos passos possíveis: testar a significância estatística das regras (por exemplo, com o teste exato de Fisher) e usar uma base maior.
+- **Significância estatística:** pelo teste exato de Fisher, a maioria das regras do topo tem p < 0,05 isoladamente, mas **nenhuma se mantém significativa** após a correção para comparações múltiplas (Bonferroni ou Benjamini-Hochberg). Detalhes no relatório.
+
+## Relatório em LaTeX
+
+A pasta [`relatorio/`](relatorio) traz um relatório no formato de artigo, com fundamentação teórica, metodologia, resultados, teste de significância e discussão.
+
+| Arquivo | Conteúdo |
+|---|---|
+| [`relatorio.pdf`](relatorio/relatorio.pdf) | Relatório compilado |
+| [`relatorio.tex`](relatorio/relatorio.tex) | Código-fonte LaTeX |
+| [`gerar_resultados.py`](relatorio/gerar_resultados.py) | Script que refaz a análise e gera tabelas, figuras e números do relatório |
+| `tabelas/`, `figuras/` | Saídas do script, usadas pelo `.tex` |
+
+Para gerar tudo de novo:
+
+```bash
+pip install pandas mlxtend matplotlib scipy
+python relatorio/gerar_resultados.py
+cd relatorio
+pdflatex relatorio.tex
+pdflatex relatorio.tex
+```
 
 ## Como executar
 
