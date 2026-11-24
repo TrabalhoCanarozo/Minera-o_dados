@@ -20,7 +20,7 @@ from traducao_produtos import TRADUCAO
 
 AQUI = Path(__file__).resolve().parent
 CSV = AQUI / "Groceries_dataset.csv"
-REPO = "https://github.com/VictorSantos117/Minera-o_dados"
+REPO = "https://github.com/TrabalhoCanarozo/Minera-o_dados"
 DOMINANTES = ("frankfurter", "sausage", "whole milk", "yogurt")
 CORES = {"escuro": "#1F3B2D", "destaque": "#E07A2F", "neutro": "#9DB0A2", "claro": "#F6F3EA"}
 

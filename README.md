@@ -4,7 +4,7 @@
 
 Trabalho da disciplina **Inteligência Computacional** — Prof. Canarozzo.
 
-[![Abrir no Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/VictorSantos117/Minera-o_dados/blob/main/Minera%C3%A7%C3%A3o_produtos.ipynb)
+[![Abrir no Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/TrabalhoCanarozo/Minera-o_dados/blob/main/Minera%C3%A7%C3%A3o_produtos.ipynb)
 
 📄 **Relatório completo (PDF):** [`relatorio/relatorio.pdf`](relatorio/relatorio.pdf)
 
@@ -171,7 +171,7 @@ O app abre no navegador em `http://localhost:8501`. A tradução dos 167 produto
 **Localmente:**
 
 ```bash
-git clone https://github.com/VictorSantos117/Minera-o_dados.git
+git clone https://github.com/TrabalhoCanarozo/Minera-o_dados.git
 cd Minera-o_dados
 pip install pandas mlxtend jupyter
 jupyter notebook Mineração_produtos.ipynb
