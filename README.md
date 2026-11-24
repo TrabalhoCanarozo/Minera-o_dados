@@ -8,7 +8,7 @@ Trabalho da disciplina **Inteligência Computacional** — Prof. Canarozzo.
 
 📄 **Relatório completo (PDF):** [`relatorio/relatorio.pdf`](relatorio/relatorio.pdf)
 
-🛒 **Simulador interativo:** [`app.py`](app.py), um app em Streamlit para explorar as regras ao vivo ([como rodar](#simulador-interativo))
+🛒 **Simulador interativo:** [cesta-de-compras.streamlit.app](https://cesta-de-compras.streamlit.app), app em Streamlit para explorar as regras ao vivo ([detalhes](#simulador-interativo))
 
 ---
 
