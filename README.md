@@ -65,14 +65,16 @@ Lift **> 1** indica associação positiva; **= 1**, independência; **< 1**, que
 
 ## Estrutura do notebook
 
-O notebook [`Mineração_produtos.ipynb`](Minera%C3%A7%C3%A3o_produtos.ipynb) é dividido em três partes:
+O notebook [`Mineração_produtos.ipynb`](Minera%C3%A7%C3%A3o_produtos.ipynb) tem estas etapas, em ordem:
 
-| Parte | Conteúdo |
+| Etapa | Conteúdo |
 |---|---|
-| **1** | Carregamento dos dados, montagem das transações, Apriori (suporte mínimo de 0,1%) e regras com lift ≥ 1 |
+| **Configuração** | Silencia os avisos das bibliotecas para deixar a saída limpa |
+| **1** | Carregamento dos dados, montagem das transações, Apriori (suporte mínimo de 0,1%, com tempo de execução) e regras com lift ≥ 1 em tabela formatada |
 | **2** | Tradução dos nomes dos produtos para português e nova geração das regras |
 | **3** | Análise sem os itens dominantes (leite integral, iogurte e salsicha): primeiro filtrando as regras, depois removendo os itens do dataset e rodando o Apriori com suporte mínimo de 0,05% |
 | **Gráfico** | Barras com o lift das 10 principais associações |
+| **Análise** | Resumo em texto das associações alternativas, com a força de cada uma pelo lift |
 
 ## Principais resultados
 
@@ -136,7 +138,7 @@ A pasta [`relatorio/`](relatorio) traz um relatório no formato de artigo, com f
 Para gerar tudo de novo:
 
 ```bash
-pip install pandas mlxtend matplotlib scipy
+pip install -r requirements.txt
 python relatorio/gerar_resultados.py
 cd relatorio
 pdflatex relatorio.tex
@@ -173,7 +175,7 @@ O app abre no navegador em `http://localhost:8501`. A tradução dos 167 produto
 ```bash
 git clone https://github.com/TrabalhoCanarozo/Minera-o_dados.git
 cd Minera-o_dados
-pip install pandas mlxtend jupyter
+pip install -r requirements.txt jupyter
 jupyter notebook Mineração_produtos.ipynb
 ```
 
